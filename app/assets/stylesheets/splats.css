@@ -1,7 +1,7 @@
 .windshield {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15vw, 1fr));
-  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  justify-items: center;
 
   > * {
     flex-shrink: 1;

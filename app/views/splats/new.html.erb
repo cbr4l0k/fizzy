@@ -1,0 +1,12 @@
+<% content_for :header do %>
+  <nav>
+    <%= link_to splats_path, class: "btn flex-item-justify-start" do %>
+      <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
+      <span class="for-screen-reader">All Splats</span>
+    <% end %>
+  </nav>
+<% end %>
+
+<div class="panel borderless pad margin center" style="view-transition-name: new-splat">
+  <%= render "splats/form", splat: @splat %>
+</div>

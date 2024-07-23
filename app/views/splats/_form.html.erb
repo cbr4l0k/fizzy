@@ -1,0 +1,40 @@
+<%= form_with model: splat, class: "flex flex-column gap" do | form | %>
+  <%= form.label :title, class: "flex flex-column justify-start align-start" do %>
+    <%= form.text_field :title, class: "input full-width", required: true, placeholder: "Name it…" %>
+  <% end %>
+
+  <fieldset class="flex flex-column unpad margin-block-end borderless justify-space-between">
+    <legend class="for-screen-reader">Color</legend>
+
+    <div class="flex align-center gap">
+      <% Splat.colors.keys.each do | color | %>
+        <label class="btn btn--circle txt-medium" style="--btn-background: <%= color -%>" >
+          <%= form.radio_button :color, color %>
+          <%= image_tag "check.svg", aria: { hidden: "true" }, size: 24, class: "checked" %>
+          <span class="for-screen-reader"><%= color %></span>
+        </label>
+      <% end %>
+    </div>
+  </fieldset>
+
+  <fieldset class="flex flex-column unpad margin-block-end borderless justify-space-between">
+    <legend class="for-screen-reader">Tag</legend>
+
+    <div class="flex align-center gap">
+      <% Splat.tags.keys.each do | tag | %>
+        <label class="btn txt-medium" style="--btn-background: <%= tag -%>" >
+          <span><%= tag %></span>
+        </label>
+      <% end %>
+    </div>
+  </fieldset>
+
+  <%= form.label :body, class: "flex flex-column justify-start align-start" do %>
+    <%= form.text_area :body, class: "input full-width", rows: 10, placeholder: "Details…" %>
+  <% end %>
+
+  <%= form.button class: "btn btn--reversed" do %>
+    <%= image_tag "check.svg", aria: { hidden: "true" }, size: 24%>
+    <span class="for-screen-reader">Save</span>
+  <% end %>
+<% end %>

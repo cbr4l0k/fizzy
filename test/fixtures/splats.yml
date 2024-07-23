@@ -1,0 +1,16 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: The logo isn't big enough
+  body: Make the logo bigger.
+  color: dodgerblue
+
+two:
+  title: Layout is broken
+  body: The page scrolls horizontally on mobile devices.
+  color: tomato
+
+three:
+  title: The text is too small
+  body: Increase the font size.
+  color: limegreen
