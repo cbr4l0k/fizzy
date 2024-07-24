@@ -28,11 +28,11 @@ class SplatsController < ApplicationController
   end
 
   private
-    def splat_params
-      params.require(:splat).permit(:title, :body, :color)
-    end
-
     def set_splat
       @splat = Splat.find(params[:id])
+    end
+
+    def splat_params
+      params.require(:splat).permit(:title, :body, :color, category_ids: [])
     end
 end

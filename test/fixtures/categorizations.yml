@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  splat: one
+  category: one
+
+two:
+  splat: two
+  category: two
+
+three:
+  splat: three
+  category: one
+
+four:
+  splat: three
+  category: two

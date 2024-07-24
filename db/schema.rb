@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_07_23_192954) do
+ActiveRecord::Schema[8.0].define(version: 2024_07_24_163519) do
+  create_table "categories", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories_splats", id: false, force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.integer "splat_id", null: false
+  end
+
+  create_table "categorizations", force: :cascade do |t|
+    t.integer "splat_id", null: false
+    t.integer "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_categorizations_on_category_id"
+    t.index ["splat_id"], name: "index_categorizations_on_splat_id"
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -50,6 +70,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_07_23_192954) do
     t.index ["organization_id"], name: "index_users_on_organization_id"
   end
 
+  add_foreign_key "categorizations", "categories"
+  add_foreign_key "categorizations", "splats"
   add_foreign_key "sessions", "users"
   add_foreign_key "users", "organizations"
 end

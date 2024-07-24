@@ -1,3 +1,7 @@
+:root {
+  --splat-size: 30vw;
+}
+
 .windshield {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15vw, 1fr));
@@ -10,9 +14,8 @@
 
 .splat {
   --hover-size: 0;
-  --splat-color: red;
+  --splat-color: var(--color-ink);
   --splat-rotate: 20deg;
-  --splat-size: 30vw;
 
   aspect-ratio: 1;
   block-size: var(--splat-size);
@@ -24,6 +27,10 @@
 
   > * {
     grid-area: 1/1;
+  }
+
+  .splat__perma & {
+    --splat-size: 50cqi !important;
   }
 }
 

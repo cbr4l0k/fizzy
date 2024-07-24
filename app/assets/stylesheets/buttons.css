@@ -4,10 +4,11 @@
 
 .btn {
   --transition: 300ms ease;
+  --btn-border-radius: 2em;
 
   align-items: center;
   background-color: var(--btn-background, var(--color-bg));
-  border-radius: var(--btn-border-radius, 2em);
+  border-radius: var(--btn-border-radius);
   border: var(--btn-border-size, 1px) solid var(--btn-border-color, var(--color-subtle-dark));
   color: var(--btn-color, var(--color-ink));
   cursor: pointer;
@@ -69,8 +70,8 @@
   }
 
   /* With radios and checkboxes */
-  &:has(input[type=radio], input[type=checkbox]) {
-    :is(input[type=radio], input[type=checkbox]) {
+  &:has(input[type=radio]) {
+    :is(input[type=radio]) {
       appearance: none;
       block-size: calc(var(--btn-size) - var(--outline-size));
       border-radius: var(--btn-border-radius);
@@ -79,6 +80,25 @@
       inline-size: calc(var(--btn-size) - var(--outline-size));
       margin: 0;
       padding: 0;
+    }
+
+    img.checked {
+      display: none;
+    }
+  }
+
+  &:has(input[type=checkbox]) {
+    position: relative;
+
+    :is(input[type=checkbox]) {
+      appearance: none;
+      border-radius: var(--btn-border-radius);
+      cursor: pointer;
+      display: flex;
+      inset: 0;
+      margin: 0;
+      padding: 0;
+      position: absolute;
     }
 
     img.checked {
