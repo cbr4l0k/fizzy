@@ -27,7 +27,7 @@ module CommentsHelper
     end
 
     def render_creator_summary(bubble, combined_collection)
-      content_tag(:div, class: "comment--upvotes flex-inline align-start gap fill-white border-radius center position-relative") do
+      content_tag(:div, class: "comment--upvotes flex-inline flex-wrap align-start gap fill-white border-radius center position-relative") do
         summary = "Added by #{bubble.creator.name} #{time_ago_in_words(bubble.created_at)} ago"
 
         initial_assignment = combined_collection.find { |item| item.is_a?(Assignment) }
@@ -74,25 +74,25 @@ module CommentsHelper
       boosts = items.select { |item| item.is_a?(Boost) }
       assignments = items.select { |item| item.is_a?(Assignment) }
 
-      content_tag(:div, class: "comment--upvotes flex-inline align-start gap fill-white border-radius center position-relative") do
-        safe_join([
+      content_tag(:div, class: "comment--upvotes flex-inline flex-wrap align-start gap fill-white border-radius center position-relative") do
+        combined_summaries = [
           render_grouped_boosts(boosts),
           render_grouped_assignments(assignments)
-        ].compact)
+        ].flatten.compact
+
+        combined_summaries.to_sentence.html_safe
       end
     end
 
     def render_grouped_boosts(boosts)
       return if boosts.empty?
       user_boosts = boosts.group_by(&:creator).transform_values(&:count)
-      boost_summaries = user_boosts.map { |user, count| "#{user.name} +#{count}" }
-      content_tag(:div, boost_summaries.to_sentence.html_safe)
+      user_boosts.map { |user, count| "#{user.name} +#{count}" }
     end
 
     def render_grouped_assignments(assignments)
       return if assignments.empty?
-      assignment_summaries = assignments.map { |assignment| "Assigned to #{assignment.user.name} #{time_ago_in_words(assignment.created_at)} ago" }
-      content_tag(:div, assignment_summaries.join(", ").html_safe)
+      assignments.map { |assignment| "Assigned to #{assignment.user.name} #{time_ago_in_words(assignment.created_at)} ago" }
     end
 
     def initial_items_count(combined_collection)
