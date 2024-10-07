@@ -47,7 +47,7 @@
 
     <dialog class="filter__popup panel fill-white shadow" data-dialog-target="dialog">
       <menu class="filter__menu unpad margin-none">
-        <% Current.account.tags.order(:title).each do |tag| %>
+        <% bucket.tags.order(:title).each do |tag| %>
           <li><%= link_to tag.title, bucket_bubbles_path(bucket, bubble_filter_params.merge(tag_id: tag.id)) %></li>
         <% end %>
       </menu>
