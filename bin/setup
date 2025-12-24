@@ -46,21 +46,6 @@ if ! command -v mise &>/dev/null; then
   echo
 fi
 
-# Install gh if needed
-if ! command -v gh &>/dev/null; then
-  echo
-  echo "▸ Installing GitHub CLI"
-  if command -v pacman &>/dev/null; then
-    sudo pacman -S --noconfirm github-cli
-  elif command -v brew &>/dev/null; then
-    brew install gh
-  else
-    echo "Please install GitHub CLI: https://github.com/cli/cli#installation"
-    exit 1
-  fi
-  echo
-fi
-
 step() {
   local step_name="$1"
   shift
