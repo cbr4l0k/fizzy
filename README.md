@@ -1,3 +1,12 @@
+---
+**I DON'T KNOW RUBY AND I HAVE NO INTENTION OF LEARNING IT... I JUST LIKE
+THIS TOOL, AND IN THIS FORK I JUST DID SOME SMALL CHANGES THAT MAKE MY LIFE
+EASIER ON THE SELF-HOSTING.**
+
+**IS NOT SAFE, NO TESTS WHERE PERFORMED, AND IT BYPASSES THE ORIGINAL'S
+AUTHOR WAY OF DOING STUFF... PLEASE GO THERE INSTEAD OF HERE 😸**
+---
+
 # Fizzy
 
 This is the source code of [Fizzy](https://fizzy.do/), the Kanban tracking tool for issues and ideas by [37signals](https://37signals.com).
